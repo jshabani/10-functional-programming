@@ -39,6 +39,18 @@
         <p><em>Details on who is writing, and how much writing they are doing...</em></p>
         <ul class="author-stats">
           <!-- TODO: No code to write here, but this is where you use a Handlebars template to give some stats for each author -->
+          <script id="article-template" type="text/x-handlebars-template">
+            <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+              <header>
+                <h1>{{title}}</h1>
+                <div class="byline">
+                  By <address><a href="{{authorUrl}}">{{author}}</a></address>
+                  {{publishStatus}}
+                </div>
+              </header>
+              <section class="article-body">{{{body}}}</section>
+            </article>
+          </script>
         </ul>
       </section>
     </main>
@@ -53,7 +65,7 @@
     <script>
       // TODO: After we fetch and load all the articles, what view function do we want to run next?
       // Let's pass in a callback function, to determine what happens AFTER all articles are loaded.
-      Article.fetchAll();
+      Article.fetchAll(articleView.initAdminPage);
     </script>
   </body>
 </html>

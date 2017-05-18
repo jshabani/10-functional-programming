@@ -8,10 +8,11 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
 // const conString = 'postgres://USERNAME:PASSWORD@HOST:PORT';
-const conString = ''; // TODO: Don't forget to set your own conString
+const conString = 'postgres://postgres:dada1@localhost:5432/demo';
+// TODO:Done Don't forget to set your own conString
 const client = new pg.Client(conString);
 client.connect();
-client.on(console.error);
+client.on('error', console.error);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
